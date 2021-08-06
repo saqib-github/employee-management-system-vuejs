@@ -34,4 +34,32 @@ export default {
       res.json(err);
     }
   },
+
+  getAllEmployees: async (req, res) => {
+    try {
+      const allData = await employeeModel.find({});
+      res.json(allData);
+    } catch (err) {
+      res.json(err);
+    }
+  },
+  deleteEmployee: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const deleteData = await employeeModel.findByIdAndDelete(id);
+      res.json(deleteData + ' deleted successfully');
+    } catch (err) {
+      res.json(err);
+    }
+  },
+  updateEmployee: async (req, res) => {
+    try {
+      const data = req.body;
+      const id = req.params.id;
+      const updatedEmpoyee = await employeeModel.findByIdAndUpdate(id, data);
+      res.json(updatedEmpoyee);
+    } catch (err) {
+      res.json(err);
+    }
+  },
 };

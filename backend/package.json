@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "A backend for sampledashboard application",
-  "type": "module", 
+  "type": "module",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"

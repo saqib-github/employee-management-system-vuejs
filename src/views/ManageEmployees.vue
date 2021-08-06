@@ -5,16 +5,10 @@
     <v-text-field
       label="Search"
       v-model.trim="searchValue"
-      solo
+      
       :prepend-inner-icon="mdiMagnify"
     ></v-text-field>
-    <base-v-component heading="Simple Tables" link="components/simple-tables" />
 
-    <base-material-card
-      icon="mdi-clipboard-text"
-      title="Simple Table"
-      class="px-5 py-3"
-    >
       <v-simple-table>
         <thead>
           <tr>
@@ -39,25 +33,14 @@
               <v-btn icon color="red" @click="deleteEmployee"
                 ><v-icon>{{ mdiTrashCan }}</v-icon></v-btn
               >
-              <v-btn icon color="green"
+              <v-btn icon color="green" @click="getAlldata"
                 ><v-icon>{{ mdiPencil }}</v-icon></v-btn
               >
             </td>
           </tr>
         </tbody>
       </v-simple-table>
-    </base-material-card>
 
-    <div class="py-3" />
-
-    <base-material-card
-      color="success"
-      dark
-      icon="mdi-clipboard-plus"
-      title="Table on Dark Background"
-      class="px-5 py-3"
-    >
-    </base-material-card>
   </v-container>
 </template>
 
@@ -66,6 +49,7 @@ import Swal from "sweetalert2";
 import { mdiTrashCan } from "@mdi/js";
 import { mdiPencil } from "@mdi/js";
 import { mdiMagnify } from "@mdi/js";
+import Helpers from "../helpers/Helper.js";
 export default {
   data() {
     return {
@@ -73,6 +57,7 @@ export default {
       mdiPencil: mdiPencil,
       mdiMagnify: mdiMagnify,
       searchValue: "",
+      data: [],
     };
   },
   methods: {
@@ -89,6 +74,11 @@ export default {
         if (result.isConfirmed) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
+      });
+    },
+    getAlldata() {
+      Helpers.GetAlldata("http://localhost:5000/employee").then((result) => {
+        console.log(result.data);
       });
     },
   },

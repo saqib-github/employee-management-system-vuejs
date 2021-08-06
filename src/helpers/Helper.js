@@ -1,7 +1,7 @@
 import axios from "axios";
 export default {
   async Post(url, data) {
-    axios
+    return await axios
       .post(url, data)
       .then((res) => {
         return res.json();
@@ -10,8 +10,8 @@ export default {
         return err.json();
       });
   },
-  GetById(url, id) {
-    axios
+  async GetById(url, id) {
+    return await axios
       .get(url, id)
       .then((res) => {
         return res.json();
@@ -20,9 +20,29 @@ export default {
         return err.json();
       });
   },
-  GetAlldata(url) {
-    axios
+   GetAlldata: async (url) => {
+    return await axios
       .get(url)
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  async deleteById(url) {
+    return await axios
+      .delete(url)
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        return err.json();
+      });
+  },
+  async updateById(url, data) {
+    return await axios
+      .put(url, data)
       .then((res) => {
         return res.json();
       })
