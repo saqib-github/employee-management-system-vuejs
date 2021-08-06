@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import pkg from "mongoose";
 const { connect, set } = pkg;
 import cors from "cors";
-import employee from "./routes/employee.js";
+import employee from "./routes/employeeRoutes.js";
 import "dotenv/config";
 
 const app = express();
@@ -26,4 +26,4 @@ connect(process.env.DB_CONNECTION)
   .then(() => console.log("connected"))
   .catch((err) => console.log(err));
 
-app.listen(3000);
+app.listen(5000);
