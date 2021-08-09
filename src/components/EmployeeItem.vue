@@ -6,7 +6,7 @@
     <td>{{ city }}</td>
     <td class="">{{ salary }}</td>
     <td class="">
-      <v-btn icon color="blue">view</v-btn>
+      <v-btn icon color="blue" @click="viewDetails(id)">view</v-btn>
       <v-btn icon color="red"
         ><v-icon @click="deleteEmployee(id)">{{ mdiTrashCan }}</v-icon></v-btn
       >
@@ -19,7 +19,6 @@
 
 <script>
 import Helpers from "../helpers/Helper.js";
-import Swal from "sweetalert2";
 import { mdiTrashCan } from "@mdi/js";
 import { mdiPencil } from "@mdi/js";
 export default {
@@ -34,25 +33,30 @@ export default {
   },
   methods: {
     deleteEmployee(_id) {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          let url = "http://localhost:5000/employee/" + _id;
-          console.log(url);
-          Helpers.deleteById(url);
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        }
-      });
+      this.$emit("delete-employee", _id);
+      // Swal.fire({
+      //   title: "Are you sure?",
+      //   text: "You won't be able to revert this!",
+      //   icon: "warning",
+      //   showCancelButton: true,
+      //   confirmButtonColor: "#3085d6",
+      //   cancelButtonColor: "#d33",
+      //   confirmButtonText: "Yes, delete it!",
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     let url = "http://localhost:5000/employee/" + _id;
+      //     console.log(url);
+      //     Helpers.deleteById(url);
+      //     Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      //   }
+      // });
     },
-    viewDetails(_id) {
-      console.log("View details id", _id);
+    viewDetails(id) {
+      console.log("View details id", id);
+      this.$router.push({
+        name: "EmployeedetailsView",
+        params: { id: id },
+      });
     },
   },
 };

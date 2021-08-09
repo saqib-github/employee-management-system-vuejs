@@ -213,7 +213,7 @@ import Helpers from "../helpers/Helper.js";
 
 export default {
   data: () => ({
-     date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+    date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
       .toISOString()
       .substr(0, 10),
     company_name: "TRC",
@@ -317,7 +317,7 @@ export default {
       } else {
         let n = 10;
         const newEmployee = {
-          company_id: this.company_name + n+1,
+          company_id: this.company_name + n + 1,
           name: this.name,
           father_name: this.father_name,
           email: this.email,
@@ -332,6 +332,12 @@ export default {
           job_type: this.job_type,
         };
         Helpers.Post("http://localhost:5000/employee", newEmployee);
+        Swal.fire(
+          "Saved",
+          "A new employee details saved successfully",
+          "success"
+        );
+        this.$router.push("/manageemployees");
       }
     },
   },

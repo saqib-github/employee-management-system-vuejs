@@ -10,14 +10,14 @@ export default {
         return err;
       });
   },
-  async GetById(url, id) {
+  async GetById(url) {
     return await axios
-      .get(url, id)
+      .get(url)
       .then((res) => {
-        return res.json();
+        return res;
       })
       .catch((err) => {
-        return err.json();
+        return err;
       });
   },
   GetAlldata: async (url) => {

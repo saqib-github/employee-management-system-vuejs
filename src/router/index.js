@@ -44,7 +44,7 @@ const routes = [
     component: PaymentMethods,
   }, 
   {
-    path: "/employeedetailsview",
+    path: "/employeeviewdetails/:id",
     name: "EmployeedetailsView",
     component: EmployeeDetailsView,
   }, 
