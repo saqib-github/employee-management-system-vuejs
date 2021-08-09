@@ -2,6 +2,7 @@
 
 ![Screenshot](manageEmployee.png)
 ![Screenshot](addEmployee.png)
+![Screenshot](employeeDetails.png)
 
 ## Project setup
 ```

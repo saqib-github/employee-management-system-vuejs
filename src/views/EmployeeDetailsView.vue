@@ -9,7 +9,9 @@
     <v-container class="my-10">
       <v-layout row wrap>
         <v-flex xs12 md2
-          ><h4>Company Id: {{ getEmployeeById.company_id }}</h4></v-flex
+          ><h4>
+            <span class="red--text">Company Id:</span> {{ getEmployeeById.company_id }}
+          </h4></v-flex
         >
         <v-flex xs12 md2
           ><h4>Name: {{ getEmployeeById.name }}</h4></v-flex
@@ -54,7 +56,9 @@
     </v-container>
     <v-container class="my-10">
       <v-layout row wrap justify-space-between>
-        <v-flex xs12 md4><h4>Joining Date: {{getEmployeeById.joining_date }}</h4></v-flex>
+        <v-flex xs12 md4
+          ><h4>Joining Date: {{ getEmployeeById.joining_date }}</h4></v-flex
+        >
         <v-flex xs12 md4 class="d-inline-flex"
           ><h4>Leaving Date: none</h4>
           <v-btn small dense color="primary" max-height="25">update</v-btn>
