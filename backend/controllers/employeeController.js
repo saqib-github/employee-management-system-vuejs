@@ -61,5 +61,16 @@ export default {
     } catch (err) {
       res.json(err);
     }
+  }, 
+   getEmployeeById: async (req, res) => {
+    try {
+      const data = req.body;
+      const id = req.params.id;
+      const updatedEmpoyee = await employeeModel.findById(id);
+      res.json(updatedEmpoyee);
+    } catch (err) {
+      res.json(err);
+    }
   },
+ 
 };

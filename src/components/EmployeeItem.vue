@@ -51,6 +51,9 @@ export default {
         }
       });
     },
+    viewDetails(_id) {
+      console.log("View details id", _id);
+    },
   },
 };
 </script>

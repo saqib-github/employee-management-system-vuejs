@@ -4,10 +4,10 @@ export default {
     return await axios
       .post(url, data)
       .then((res) => {
-        return res.json();
+        return res;
       })
       .catch((err) => {
-        return err.json();
+        return err;
       });
   },
   async GetById(url, id) {
