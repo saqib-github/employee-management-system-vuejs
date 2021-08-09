@@ -20,7 +20,7 @@ export default {
         return err.json();
       });
   },
-   GetAlldata: async (url) => {
+  GetAlldata: async (url) => {
     return await axios
       .get(url)
       .then((res) => {
@@ -34,10 +34,10 @@ export default {
     return await axios
       .delete(url)
       .then((res) => {
-        return res.json();
+        return res;
       })
       .catch((err) => {
-        return err.json();
+        return err;
       });
   },
   async updateById(url, data) {
